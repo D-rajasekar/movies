@@ -1,9 +1,7 @@
 import { Movies } from "../models/movies.model.js";
 
 async function getAllMoviesquery() {
-  return await Movies.findAll({
-    attributes: ["name", "poster", "rating", "summary", "trailer", "createdAt"],
-  });
+  return await Movies.findAll();
 }
 
 async function createMoviequery(name, poster, rating, summary, trailer) {
