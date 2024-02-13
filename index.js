@@ -2,6 +2,9 @@ import express from "express";
 import { sequelize } from "./config.js";
 import { Movies } from "./models/movies.model.js";
 import Moviesrouter from "./routes/movies.route.js";
+import Usersrouter from "./routes/users.route.js";
+import { Signup } from "./models/users.model.js";
+import cors from "cors"
 
 try {
   await sequelize.authenticate();
@@ -11,14 +14,11 @@ try {
   console.error("Unable to connect to the database:", error);
 }
 const app = express();
-app.use(express.json());
-// const user1 = await Movies.create({
-//   name: "Leo",
-//   poster:
-//     "https://m.media-amazon.com/images/M/MV5BM2Y4MzQ3NmUtOWQ5My00YTFjLTkzNDMtNzliODQ5NTFmZjg3XkEyXkFqcGdeQXVyMTUyNjIwMDEw._V1_.jpg",
-//   rating: 8,
-//   summary: "leooooooooooooooooo",
-//   trailer: "https://youtu.be/Po3jStA673E?si=cq5ALjEq55YQebIB",
+app.use(express.json()); //middleware
+app.use(cors());
+// const user1 = await Signup.create({
+//   username: "Leo",
+//   password: "password@123",
 // });
 
 //console.log("Jane's auto-generated ID:", user1.id);
@@ -29,5 +29,8 @@ const PORT = process.env.PORT;
 // });
 
 app.use("/movies", Moviesrouter);
+app.use("/users", Usersrouter);
 
 app.listen(PORT, () => console.log(`The server started in: ${PORT} ✨✨`));
+
+// const userPassword="password@123";
