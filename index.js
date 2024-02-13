@@ -4,7 +4,8 @@ import { Movies } from "./models/movies.model.js";
 import Moviesrouter from "./routes/movies.route.js";
 import Usersrouter from "./routes/users.route.js";
 import { Signup } from "./models/users.model.js";
-import cors from "cors"
+import cors from "cors";
+import morgan from "morgan";
 
 try {
   await sequelize.authenticate();
@@ -16,6 +17,8 @@ try {
 const app = express();
 app.use(express.json()); //middleware
 app.use(cors());
+app.use(morgan("tiny"));
+
 // const user1 = await Signup.create({
 //   username: "Leo",
 //   password: "password@123",
