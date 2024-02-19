@@ -1,4 +1,5 @@
 import { Signup } from "../models/users.model.js";
+import { Session } from "../models/sessions.js";
 
 async function createUsersquery({username, password}) {
   try {
@@ -21,5 +22,9 @@ async function getUserService(){
   return await Signup.findAll();
 }
 
+async function createSessionFunction(userid, token) {
+  return await Session.create({ userid, token });
+}
 
-export default { createUsersquery,getUserByName,getUserService };
+
+export default { createUsersquery,getUserByName,getUserService ,createSessionFunction};

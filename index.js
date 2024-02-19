@@ -6,6 +6,7 @@ import Usersrouter from "./routes/users.route.js";
 import { Signup } from "./models/users.model.js";
 import cors from "cors";
 import morgan from "morgan";
+import { v2 as cloudinary } from "cloudinary";
 
 try {
   await sequelize.authenticate();
@@ -14,6 +15,9 @@ try {
 } catch (error) {
   console.error("Unable to connect to the database:", error);
 }
+
+
+
 const app = express();
 app.use(express.json()); //middleware
 app.use(cors());

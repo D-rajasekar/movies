@@ -35,6 +35,7 @@ export default {
   getAllMoviesquery,
   createMoviequery,
   getAllMoviesquery,
+  getMoviesbyIDquery,
   deleteMoviesbyIDquery,
   updateMoviesbyIDquery,
 };
